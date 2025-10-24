@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * <p>
  * 날짜: 2025-10-23
  */
-public class Cars {
+public class Cars implements Iterable<Car> {
     private static List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> carNames) {
@@ -40,5 +41,10 @@ public class Cars {
             }
         }
         return winners;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return cars.iterator();
     }
 }
