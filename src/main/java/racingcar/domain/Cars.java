@@ -29,7 +29,7 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    public List<Car> getWinners() {
+    public List<Car> findWinners() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
