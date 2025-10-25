@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * 날짜: 2025-10-23
  */
 public class Cars implements Iterable<Car> {
-    private static List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> carNames) {
         for (String carName : carNames) {
@@ -20,9 +21,9 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    public void moveAllCars(RandomGenerator randomGenerator) {
+    public void moveAllCars() {
         for (Car car : cars) {
-            int number = randomGenerator.getRandomNumber();
+            int number = Randoms.pickNumberInRange(1, 9);
             if (number >= 4) {
                 car.move();
             }
