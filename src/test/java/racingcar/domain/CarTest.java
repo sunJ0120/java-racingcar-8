@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -31,13 +33,17 @@ class CarTest {
         car.move();
 
         //then
-        Assertions.assertEquals(car.getPosition(),1);
+        assertSimpleTest(() -> {
+            Assertions.assertEquals(car.getPosition(),1);
+        });
     }
 
     @Test
     void 위치_초기값_테스트() {
         //then
-        Assertions.assertEquals(car.getPosition(),0);
+        assertSimpleTest(() -> {
+            Assertions.assertEquals(car.getPosition(),0);
+        });
     }
 
     @Test
@@ -50,6 +56,8 @@ class CarTest {
         car.move();
 
         //then
-        Assertions.assertEquals(car.getPosition(),3);
+        assertSimpleTest(() -> {
+            Assertions.assertEquals(car.getPosition(),3);
+        });
     }
 }
