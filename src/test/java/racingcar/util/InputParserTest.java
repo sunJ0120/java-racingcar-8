@@ -32,7 +32,7 @@ class InputParserTest {
         //given
         inputMessage = "아현,라미,아사,치키타,로라,파리타,루카";
         //when
-        List<String> carNames = inputParser.parseCarName(inputMessage);
+        List<String> carNames = inputParser.parseCarNames(inputMessage);
         //then
         assertSimpleTest(() -> {
             assertEquals(7, carNames.size());
@@ -45,7 +45,7 @@ class InputParserTest {
         inputMessage = "";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("공백");
         });
@@ -57,7 +57,7 @@ class InputParserTest {
         inputMessage = "       ";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("공백");
         });
@@ -69,7 +69,7 @@ class InputParserTest {
         inputMessage = ",,,,,,,";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("차 이름을 입력해주세요");
         });
@@ -81,7 +81,7 @@ class InputParserTest {
         inputMessage = "    ,  ,  ,    , ,  ,  ,";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("공백");
         });
@@ -93,7 +93,7 @@ class InputParserTest {
         inputMessage = "아현,라미,,    , ,  ,로라,아사";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("공백");
         });
@@ -105,7 +105,7 @@ class InputParserTest {
         inputMessage = "아현,라미,로라,아현,파리타,라미";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("중복");
         });
@@ -117,7 +117,7 @@ class InputParserTest {
         inputMessage = "아현아현아현";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("차 이름은 5자보다 길 수 없습니다.");
         });
@@ -129,7 +129,7 @@ class InputParserTest {
         inputMessage = "아현,라미,우테코프리코스아자아자,파리타";
         //when & then
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> inputParser.parseCarName(inputMessage))
+            assertThatThrownBy(() -> inputParser.parseCarNames(inputMessage))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("차 이름은 5자보다 길 수 없습니다.");
         });
@@ -140,7 +140,7 @@ class InputParserTest {
         //given
         inputMessage = "@@@@@,*****";
         //when
-        List<String> carNames = inputParser.parseCarName(inputMessage);
+        List<String> carNames = inputParser.parseCarNames(inputMessage);
         //then
         assertSimpleTest(() -> {
             assertEquals(2, carNames.size());
@@ -152,7 +152,7 @@ class InputParserTest {
         //given
         inputMessage = "   블랙핑크    ,    엔믹스     ,    뉴진스     ";
         //when
-        List<String> carNames = inputParser.parseCarName(inputMessage);
+        List<String> carNames = inputParser.parseCarNames(inputMessage);
         //then
         assertSimpleTest(() -> {
             assertEquals("블랙핑크", carNames.get(0));
