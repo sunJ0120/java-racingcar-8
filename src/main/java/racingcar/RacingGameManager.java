@@ -33,14 +33,12 @@ public class RacingGameManager {
         int attemptCount = inputView.readAttemptCount();
         outputView.printRacingStart();
         playRacing(cars, attemptCount);
-        List<Car> winners = cars.findWinners();
-        outputView.printWinners(winners);
+        announceWinners(cars);
     }
 
     private Cars prepareCars() {
         List<String> parseCarName = inputView.readAndParseCarNames();
-        Cars cars = new Cars(parseCarName);
-        return cars;
+        return new Cars(parseCarName);
     }
 
     private void playRacing(Cars cars, int attemptCount) {
@@ -48,5 +46,10 @@ public class RacingGameManager {
             racingController.race(cars);
             outputView.printRoundResult(cars);
         }
+    }
+
+    private void announceWinners(Cars cars) {
+        List<Car> winners = cars.findWinners();
+        outputView.printWinners(winners);
     }
 }
