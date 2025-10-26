@@ -41,7 +41,7 @@ public class Cars implements Iterable<Car> {
         return winners;
     }
 
-    public int findMaxPosition() {
+    private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
