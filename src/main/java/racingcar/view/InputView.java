@@ -33,6 +33,6 @@ public class InputView {
     }
 
     private List<String> parseCarName(String attemptString) {
-        return inputParser.parseCarName(attemptString);
+        return inputParser.parseCarNames(attemptString);
     }
 }
