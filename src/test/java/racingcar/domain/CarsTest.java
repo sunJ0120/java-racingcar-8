@@ -32,7 +32,7 @@ class CarsTest {
     }
 
     @Test
-    void 값이_4보다_작으면_모든차가_움직이지_않는다() {
+    void 값이_4미만_이면_모든차가_움직이지_않는다() {
         //then
         assertRandomNumberInRangeTest(
                 () -> {
@@ -46,7 +46,7 @@ class CarsTest {
     }
 
     @Test
-    void 값이_4보다_크면_모든차가_움직인다() {
+    void 값이_4이상_이면_모든차가_움직인다() {
         //then
         assertRandomNumberInRangeTest(
                 () -> {
