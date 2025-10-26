@@ -31,17 +31,22 @@ public class Cars implements Iterable<Car> {
     }
 
     public List<Car> findWinners() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
+        int maxPosition = findMaxPosition();
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.isWinner(maxPosition)) {
                 winners.add(car);
             }
         }
         return winners;
+    }
+
+    public int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
     }
 
     @Override
