@@ -14,6 +14,8 @@ import racingcar.util.InputParser;
 public class InputView {
     private static final String INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_ATTEMPT_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String ERROR_ATTEMPT_COUNT_POSITIVE = "시도 횟수는 1 이상이어야 합니다.";
+    private static final String ERROR_ATTEMPT_COUNT__NOT_INTEGER = "시도 횟수는 숫자여야 합니다.";
     private final InputParser inputParser;
 
     public InputView(InputParser inputParser) {
@@ -29,7 +31,19 @@ public class InputView {
     public int readAttemptCount() {
         System.out.println(INPUT_ATTEMPT_COUNT_MESSAGE);
         String attemptCount = Console.readLine();
-        return Integer.parseInt(attemptCount);
+        try {
+            int count = Integer.parseInt(attemptCount);
+            validateAttemptCount(count);
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_ATTEMPT_COUNT__NOT_INTEGER);
+        }
+    }
+
+    private void validateAttemptCount(int count) {
+        if (count < 1) {
+            throw new IllegalArgumentException(ERROR_ATTEMPT_COUNT_POSITIVE);
+        }
     }
 
     private List<String> parseCarName(String attemptString) {
